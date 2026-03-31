@@ -6,9 +6,9 @@ export default function Home() {
     <div className="page" style={{ justifyContent: 'center', minHeight: '100%' }}>
       <div style={{ textAlign: 'center', marginBottom: 8 }} className="fade-up">
         <div style={{ fontSize: '3.8rem', marginBottom: 16 }}>🗺️</div>
-        <h1 style={{ fontSize: 'clamp(2rem, 8vw, 2.8rem)', marginBottom: 12 }}>Where Do<br />We Go?</h1>
+        <h1 style={{ fontSize: 'clamp(2rem, 8vw, 2.8rem)', marginBottom: 12 }}>Where Do<br />We Eat?</h1>
         <p style={{ color: 'var(--text-muted)', fontSize: '1rem', lineHeight: 1.6, maxWidth: 280, margin: '0 auto' }}>
-          Stop debating. Swipe on places together and find where everyone wants to go.
+          Stop debating. Swipe on places together and find where everyone wants to eat.
         </p>
       </div>
       <div style={{ display: 'flex', gap: 8, flexWrap: 'wrap', justifyContent: 'center' }} className="fade-up-delay">

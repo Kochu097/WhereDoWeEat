@@ -1,9 +1,9 @@
 {
-  "name": "where-do-we-go",
+  "name": "where-do-we-eat",
   "private": true,
   "version": "0.1.0",
   "type": "module",
-  "homepage": "https://Kochu097.github.io/WhereDoWeGo",
+  "homepage": "https://Kochu097.github.io/WhereDoWeEat",
   "scripts": {
     "dev": "vite",
     "build": "vite build",

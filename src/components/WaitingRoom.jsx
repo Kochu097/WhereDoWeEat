@@ -10,7 +10,7 @@ export default function WaitingRoom({ room, userId }) {
 
   const copyLink = async () => {
     try {
-      await navigator.share({ title: 'Where Do We Go?', url: shareUrl })
+      await navigator.share({ title: 'Where Do We Eat?', url: shareUrl })
     } catch {
       navigator.clipboard.writeText(shareUrl).catch(() => {})
       showToast('Link copied! 🔗')

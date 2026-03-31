@@ -67,7 +67,7 @@ export default function VotingView({ room, userId }) {
 
       {/* Header row */}
       <div style={{ width: '100%', maxWidth: 380, display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-        <div className="logo">Where Do <span>We Go?</span></div>
+        <div className="logo">Where Do <span>We Eat?</span></div>
         <span className="badge badge-accent">{voted.length}/{places.length}</span>
       </div>
 

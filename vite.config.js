@@ -5,7 +5,7 @@ import { config } from 'dotenv';
 config();
 
 export default defineConfig({
-  base: '/WhereDoWeGo/',
+  base: '/WhereDoWeEat/',
   define: {
     'process.env': process.env
   },

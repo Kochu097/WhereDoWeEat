@@ -1,7 +1,7 @@
 {
-  "name": "Where Do We Go?",
-  "short_name": "WeGoApp",
-  "description": "Swipe on places together and find where everyone wants to go",
+  "name": "Where Do We Eat?",
+  "short_name": "WeEatApp",
+  "description": "Swipe on places together and find where everyone wants to eat",
   "start_url": "/",
   "display": "standalone",
   "background_color": "#0a0a0f",
