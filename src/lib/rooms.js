@@ -15,7 +15,7 @@ export async function createRoom(hostName, customPlaces) {
   await setDoc(doc(db, 'rooms', code), {
     code,
     hostName,
-    customPlaces,
+    places: customPlaces,
     status: 'waiting', // waiting | voting | results
     members: { },
     votes: { },
