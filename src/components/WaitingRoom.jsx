@@ -6,7 +6,7 @@ export default function WaitingRoom({ room, userId }) {
   const { toast, showToast } = useToast()
   const isHost = room.hostName === room.members[userId]?.name
   const members = Object.values(room.members || {})
-  const shareUrl = `${window.location.origin}/WhereDoWeEat/join/${room.code}`
+  const shareUrl = `${window.location.origin}/WhereDoWeEat/#/join/${room.code}`
 
   const copyLink = async () => {
     try {
