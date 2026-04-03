@@ -7,7 +7,10 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "test": "vitest",
+    "test:ui": "vitest --ui",
+    "test:coverage": "vitest run --coverage"
   },
   "dependencies": {
     "@use-gesture/react": "^10.3.0",
@@ -18,7 +21,13 @@
     "react-router-dom": "^6.21.0"
   },
   "devDependencies": {
+    "@testing-library/jest-dom": "^6.9.1",
+    "@testing-library/react": "^16.3.2",
+    "@testing-library/user-event": "^14.6.1",
     "@vitejs/plugin-react": "^4.2.1",
-    "vite": "^5.0.8"
+    "@vitest/ui": "^4.1.2",
+    "happy-dom": "^20.8.9",
+    "vite": "^5.0.8",
+    "vitest": "^4.1.2"
   }
 }

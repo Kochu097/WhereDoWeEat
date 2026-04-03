@@ -10,4 +10,9 @@ export default defineConfig({
     'process.env': process.env
   },
   plugins: [react()],
+  test: {
+    environment: 'happy-dom',
+    globals: true,
+    setupFiles: './src/test/setup.js',
+  },
 })
