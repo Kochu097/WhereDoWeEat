@@ -10,7 +10,7 @@ permissions:
 
 jobs:
   build:
-    name: Build the app
+    name: test and build
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
