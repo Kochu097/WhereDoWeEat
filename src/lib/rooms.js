@@ -2,7 +2,8 @@ import {
   doc, setDoc, getDoc, updateDoc,
   onSnapshot, serverTimestamp
 } from 'firebase/firestore'
-import { db } from './firebase'
+import { db, analytics } from './firebase'
+import { logEvent } from 'firebase/analytics'
 
 export function generateRoomCode() {
   const chars = 'ABCDEFGHJKLMNPQRSTUVWXYZ23456789'
@@ -31,6 +32,7 @@ export async function joinRoom(code, userName) {
 
   if (!snap.exists()) throw new Error('Room not found')
   if (snap.data().status === 'results') throw new Error('This room has already finished voting')
+  logEvent(analytics, 'user_joined_room')
 
   return roomRef
 }
@@ -50,10 +52,12 @@ export async function castVote(code, userId, placeId, liked) {
 }
 
 export async function startVoting(code) {
+  logEvent(analytics, 'room_started_voting')
   await updateDoc(doc(db, 'rooms', code), { status: 'voting' })
 }
 
 export async function finishVoting(code) {
+  logEvent(analytics, 'room_finished_voting')
   await updateDoc(doc(db, 'rooms', code), { status: 'results' })
 }
 
