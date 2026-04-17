@@ -1,11 +1,14 @@
 import { computeMatches, computeScores } from '../lib/rooms'
+import FeedbackWidget from './FeedbackWidget'
 import { useNavigate } from 'react-router-dom'
+import { useState } from 'react'
 
-export default function ResultsView({ room }) {
+export default function ResultsView({ room, userId }) {
   const nav = useNavigate()
   const matches = computeMatches(room)
   const scores  = computeScores(room)
   const memberCount = Object.keys(room.members || {}).length
+  const [showFeedback, setShowFeedback] = useState(false)
 
   return (
     <div className="page">
@@ -93,6 +96,15 @@ export default function ResultsView({ room }) {
         <button className="btn btn-primary" onClick={() => nav('/create')}>
           🔄 Start a New Room
         </button>
+        <button className="btn btn-secondary" style={{ marginTop: 8 }} onClick={() => setShowFeedback(true)}>
+          Share your opinion!
+        </button>
+        <FeedbackWidget
+          open={showFeedback}
+          onClose={() => setShowFeedback(false)}
+          userId={userId}          // pass the anonymous auth uid from your parent
+          context="results-view"  // optional: tracks where feedback came from
+        />
         <button className="btn btn-ghost" style={{ marginTop: 8 }} onClick={() => nav('/')}>
           ← Back to Home
         </button>
