@@ -37,6 +37,13 @@ export async function joinRoom(code, userName) {
   return roomRef
 }
 
+export async function updatePlaces(code, customPlaces) {
+  const roomRef = doc(db, 'rooms', code.toUpperCase())
+  await updateDoc(roomRef, {
+    [`places`]: customPlaces
+  })
+}
+
 export async function addMember(code, userId, userName) {
   const roomRef = doc(db, 'rooms', code.toUpperCase())
   await updateDoc(roomRef, {

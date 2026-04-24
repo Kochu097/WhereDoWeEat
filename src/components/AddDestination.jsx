@@ -162,7 +162,7 @@ function DestinationForm({ onAdd, onCancel }) {
   )
 }
 
-function DestinationChip({ place, onRemove }) {
+function DestinationChip({ place, onRemove, canRemove }) {
   return (
     <div style={{
       display: 'flex',
@@ -189,26 +189,28 @@ function DestinationChip({ place, onRemove }) {
         </div>
         <span style={{ fontSize: '0.72rem', color: 'var(--text-muted)' }}>{place.category}</span>
       </div>
-      <button
-        type="button"
-        onClick={() => onRemove(place.id)}
-        style={{
-          background: 'none',
-          border: 'none',
-          color: 'var(--text-muted)',
-          cursor: 'pointer',
-          fontSize: '1rem',
-          padding: '2px 6px',
-          borderRadius: 6,
-          flexShrink: 0,
-          transition: 'color 0.15s',
-        }}
-        onMouseEnter={e => e.target.style.color = 'var(--accent)'}
-        onMouseLeave={e => e.target.style.color = 'var(--text-muted)'}
-        aria-label={`Remove ${place.name}`}
-      >
-        ✕
-      </button>
+      {canRemove && (
+        <button
+          type="button"
+          onClick={() => onRemove(place.id)}
+          style={{
+            background: 'none',
+            border: 'none',
+            color: 'var(--text-muted)',
+            cursor: 'pointer',
+            fontSize: '1rem',
+            padding: '2px 6px',
+            borderRadius: 6,
+            flexShrink: 0,
+            transition: 'color 0.15s',
+          }}
+          onMouseEnter={e => e.target.style.color = 'var(--accent)'}
+          onMouseLeave={e => e.target.style.color = 'var(--text-muted)'}
+          aria-label={`Remove ${place.name}`}
+        >
+          ✕
+        </button>
+      )}
     </div>
   )
 }
@@ -217,7 +219,7 @@ function DestinationChip({ place, onRemove }) {
 // Props:
 //   destinations  – array of place objects (controlled from parent)
 //   onChange      – called with updated array whenever list changes
-export default function AddDestination({ destinations, onChange }) {
+export default function AddDestination({ destinations, onChange, isHost = true }) {
   const [showForm, setShowForm] = useState(false)
 
   const handleAdd = (place) => {
@@ -251,7 +253,7 @@ export default function AddDestination({ destinations, onChange }) {
       {destinations.length > 0 && (
         <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
           {destinations.map(place => (
-            <DestinationChip key={place.id} place={place} onRemove={handleRemove} />
+            <DestinationChip key={place.id} place={place} onRemove={handleRemove} canRemove={isHost}  />
           ))}
         </div>
       )}
