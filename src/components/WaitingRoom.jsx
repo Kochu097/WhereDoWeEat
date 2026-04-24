@@ -1,6 +1,7 @@
-// src/components/WaitingRoom.jsx
-import { startVoting } from '../lib/rooms'
+import { startVoting, updatePlaces } from '../lib/rooms'
 import Toast, { useToast } from './Toast'
+import AddDestination from '../components/AddDestination'
+import { useState } from 'react'
 
 export default function WaitingRoom({ room, userId }) {
   const { toast, showToast } = useToast()
@@ -15,6 +16,11 @@ export default function WaitingRoom({ room, userId }) {
       navigator.clipboard.writeText(shareUrl).catch(() => {})
       showToast('Link copied! 🔗')
     }
+  }
+
+  const addPlace = async (list) => {
+     room.places = list
+     await updatePlaces(room.code, list)
   }
 
   const copyCode = () => {
@@ -57,6 +63,15 @@ export default function WaitingRoom({ room, userId }) {
         <button className="btn btn-secondary" onClick={copyLink}>
           🔗 Share Invite Link
         </button>
+      </div>
+
+      {/* Destinations */}
+      <div className="card" style={{ width: '100%', maxWidth: 380 }}>
+        <AddDestination
+          destinations={room.places}
+          onChange={addPlace}
+          isHost = {isHost}
+        />
       </div>
 
       {/* Members */}
